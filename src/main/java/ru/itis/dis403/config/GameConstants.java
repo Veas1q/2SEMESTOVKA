@@ -12,6 +12,7 @@ public class GameConstants {
     public static final int BULLET_SIZE = 2;
 
     public static final float PLAYER_SPEED = 1.5f;
+    public static final float BULLET_SPEED = 6f;
     public static final int SHOOT_DELAY_MS = 120;
 
     private GameConstants() {

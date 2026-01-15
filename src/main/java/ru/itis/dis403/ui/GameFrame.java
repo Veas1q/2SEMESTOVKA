@@ -62,25 +62,6 @@ public class GameFrame extends JFrame {
         requestFocusInWindow();
         setFocusTraversalKeysEnabled(false);
 
-        // ===== СЕТЬ =====
-        // В GameFrame при создании ClientConnection мы передаём IP и порт,
-        // чтобы указать, к какому серверу нужно подключиться.
-        //
-        // Третьим параметром передаётся лямбда-выражение — это реализация
-        // интерфейса PacketListener.
-        //
-        // PacketListener выступает в роли callback-функции:
-        // это код, который ClientConnection вызовет сам,
-        // когда от сервера придёт сетевой пакет.
-        //
-        // ClientConnection сохраняет этот callback у себя.
-        // В отдельном сетевом потоке он принимает сообщения от сервера,
-        // десериализует строку в объект Packet
-        // и вызывает callback (listener.onPacket).
-        //
-        // Таким образом управление временно передаётся в GameFrame,
-        // где пакет обрабатывается, после чего управление
-        // возвращается обратно в сетевой поток ClientConnection.
 
         connection = new ClientConnection(ip, 5000, packet -> {
 

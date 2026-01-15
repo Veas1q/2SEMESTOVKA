@@ -1,15 +1,14 @@
 package ru.itis.dis403;
 
 
-import ru.itis.dis403.model.GameMap;
 import ru.itis.dis403.ui.GameFrame;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.image.BufferedImage;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException {
         String[] options = {"Host", "Client"};
         ImageIcon icon = new ImageIcon(Main.class.getResource("/sprites/icon/icon.png")); // JOptionPane требует тип ImageIcon
 
@@ -25,6 +24,8 @@ public class Main {
         );
 
         if (choice == 0) {
+            String localIp = InetAddress.getLocalHost().getHostAddress();
+            JOptionPane.showMessageDialog(null, "Ваш IP: " + localIp);
             new GameFrame(true, "localhost");
         } else {
             String ip = JOptionPane.showInputDialog("IP хоста:");

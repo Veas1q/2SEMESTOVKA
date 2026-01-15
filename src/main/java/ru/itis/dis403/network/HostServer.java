@@ -1,5 +1,6 @@
 package ru.itis.dis403.network;
 
+import static ru.itis.dis403.config.GameConstants.BULLET_SPEED;
 import static ru.itis.dis403.network.Protocol.*;
 import ru.itis.dis403.logic.GameLoop;
 import ru.itis.dis403.logic.GameState;
@@ -268,9 +269,11 @@ public class HostServer {
         if (pl.facingLeft && targetX > pl.x + 10) return;
         if (!pl.facingLeft && targetX < pl.x) return;
 
+        // кооринаты вылета пули
         float gunX = pl.x;
         float gunY = pl.y + 4;
 
+        // вектор направления
         float dx = targetX - gunX;
         float dy = targetY - gunY;
 
@@ -283,8 +286,8 @@ public class HostServer {
         Bullet bullet = new Bullet(
                 gunX,
                 gunY,
-                dx * 6f,
-                dy * 6f,
+                dx * BULLET_SPEED,
+                dy * BULLET_SPEED,
                 pl.id,
                 pl.weapon.damage
         );
