@@ -25,7 +25,6 @@ public class GamePanel extends JPanel {
     private boolean showTab = false;
     private List<String> globalTop = new ArrayList<>();
 
-    // 🔴 КРОВЬ
     private final List<BloodEffect> blood = new ArrayList<>();
     private final Map<Integer, Integer> lastHp = new HashMap<>();
 

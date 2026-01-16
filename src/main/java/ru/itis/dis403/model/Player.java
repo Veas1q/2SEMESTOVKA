@@ -1,6 +1,7 @@
 package ru.itis.dis403.model;
 
 import ru.itis.dis403.config.GameConstants;
+import ru.itis.dis403.ui.SpriteLoader;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -15,14 +16,13 @@ public class Player {
     public String name;
     public int lastDamageFrom = -1;
 
-    public BufferedImage sprite;
+    public BufferedImage sprite = SpriteLoader.load("/sprites/player/player_sheet.png");
     public Weapon weapon;
 
-    public Player(int id, float x, float y, BufferedImage sprite, String name) {
+    public Player(int id, float x, float y, String name) {
         this.id = id;
         this.x = x;
         this.y = y;
-        this.sprite = sprite;
         this.name = name;
         this.weapon = Weapon.pistol();
     }

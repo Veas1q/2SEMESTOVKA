@@ -33,16 +33,10 @@ public class HostServer {
     private final PhysicsEngine physics;
 
     private int nextId = 1;
-    private BufferedImage playerSprite;
 
     public HostServer(int port, long gameDurationMs) {
         this.gameDurationMs = gameDurationMs;
         this.physics = new PhysicsEngine(state);
-
-        BufferedImage ps = SpriteLoader.load("/sprites/player/player_sheet.png");
-        if (ps != null) {
-            playerSprite = SpriteLoader.crop(ps, 0, 0, 43, 70);
-        }
 
         new GameLoop(state, this::update).start();
 
@@ -170,7 +164,7 @@ public class HostServer {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
-            Player p = new Player(id, 0, 0, playerSprite, "");
+            Player p = new Player(id, 0, 0,  "");
             respawnPlayer(p);
             state.players.put(id, p);
 

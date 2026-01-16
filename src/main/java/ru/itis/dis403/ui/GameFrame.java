@@ -30,8 +30,6 @@ public class GameFrame extends JFrame {
     private int myId = -1;
     private String playerName;
 
-    private BufferedImage playerSprite;
-
     public GameFrame(boolean isHost, String ip) {
         this.isHost = isHost;
 
@@ -45,11 +43,6 @@ public class GameFrame extends JFrame {
                     JOptionPane.showInputDialog("Сколько минут длится игра?")
             );
             new HostServer(5000, minutes * 60_000L);
-        }
-
-        playerSprite = SpriteLoader.load("/sprites/player/player_sheet.png");
-        if (playerSprite != null) {
-            playerSprite = SpriteLoader.crop(playerSprite, 0, 0, 43, 70);
         }
 
         GamePanel panel = initButtons(isHost);
@@ -107,7 +100,6 @@ public class GameFrame extends JFrame {
             public void mouseReleased(MouseEvent e) { localPlayer.shooting = false; }
         });
 
-//        Таймер постоянно обрабатывает ввод, но пакеты отправляются только при изменении состояния или при допустимой стрельбе, чтобы не перегружать сервер.
         new Timer(16, e -> {
 
             if (!gameStarted) {
@@ -327,7 +319,7 @@ public class GameFrame extends JFrame {
 
             Player p = state.players.get(id);
             if (p == null) {
-                p = new Player(id, px, py, playerSprite, name);
+                p = new Player(id, px, py, name);
                 state.players.put(id, p);
             }
 
