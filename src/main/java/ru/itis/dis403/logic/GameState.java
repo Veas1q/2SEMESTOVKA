@@ -13,6 +13,5 @@ public class GameState {
     public Map<Integer, Player> players = new ConcurrentHashMap<>();
     public List<Bullet> bullets = new CopyOnWriteArrayList<>();
 
-
     public GameMap map = new GameMap();
 }

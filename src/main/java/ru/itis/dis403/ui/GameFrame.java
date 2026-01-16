@@ -9,7 +9,6 @@ import ru.itis.dis403.config.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,6 @@ public class GameFrame extends JFrame {
     private int myId = -1;
     private String playerName;
 
-    private BufferedImage playerSprite;
 
     public GameFrame(boolean isHost, String ip) {
         this.isHost = isHost;
@@ -47,10 +45,6 @@ public class GameFrame extends JFrame {
             new HostServer(5000, minutes * 60_000L);
         }
 
-        playerSprite = SpriteLoader.load("/sprites/player/player_sheet.png");
-        if (playerSprite != null) {
-            playerSprite = SpriteLoader.crop(playerSprite, 0, 0, 43, 70);
-        }
 
         GamePanel panel = initButtons(isHost);
 
@@ -107,7 +101,7 @@ public class GameFrame extends JFrame {
             public void mouseReleased(MouseEvent e) { localPlayer.shooting = false; }
         });
 
-//        Таймер постоянно обрабатывает ввод, но пакеты отправляются только при изменении состояния или при допустимой стрельбе, чтобы не перегружать сервер.
+//        Таймер постоянно обрабатывает ввод, но пакеты отправляются только при изменении состояния , чтобы не перегружать сервер.
         new Timer(16, e -> {
 
             if (!gameStarted) {
@@ -161,19 +155,7 @@ public class GameFrame extends JFrame {
         int bw = 160;
         int bh = 35;
 
-        restartButton.setBounds(
-                (panel.getWidth() - bw) / 2,
-                panel.getHeight() / 2 + 80,
-                bw,
-                bh
-        );
 
-        exitButton.setBounds(
-                (panel.getWidth() - bw) / 2,
-                panel.getHeight() / 2 + 120,
-                bw,
-                bh
-        );
 
         restartButton.setVisible(false);
         exitButton.setVisible(false);
@@ -181,12 +163,12 @@ public class GameFrame extends JFrame {
         panel.add(restartButton);
         panel.add(exitButton);
 
+        //при изменение размера окна кнопки тоже меняют свое положение и размер
         panel.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                int x = (panel.getWidth() - bw) / 2;
-                restartButton.setBounds(x, panel.getHeight() / 2 + 80, bw, bh);
-                exitButton.setBounds(x, panel.getHeight() / 2 + 120, bw, bh);
+                restartButton.setBounds((panel.getWidth() - bw) / 2, panel.getHeight() / 2 + 80, bw, bh);
+                exitButton.setBounds((panel.getWidth() - bw) / 2, panel.getHeight() / 2 + 120, bw, bh);
             }
         });
 
@@ -203,21 +185,15 @@ public class GameFrame extends JFrame {
              startButton = new JButton("Начать игру");
             panel.setLayout(null);
 
-            int bx = (panel.getWidth() - bw) / 2;
-            int by = (panel.getHeight() - bh) / 2;
-
-            startButton.setBounds(bx, by, bw, bh);
             if (startButton != null) {
-                startButton.setVisible(isHost && !gameStarted && !panel.isGameOver());
+                startButton.setVisible(!gameStarted && !panel.isGameOver());
             }
             panel.add(startButton);
 
             panel.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {
-                    int x = (panel.getWidth() - bw) / 2;
-                    int y = (panel.getHeight() - bh) / 2;
-                    startButton.setBounds(x, y, bw, bh);
+                    startButton.setBounds((panel.getWidth() - bw) / 2, (panel.getHeight() - bh) / 2, bw, bh);
                 }
             });
 
@@ -327,7 +303,7 @@ public class GameFrame extends JFrame {
 
             Player p = state.players.get(id);
             if (p == null) {
-                p = new Player(id, px, py, playerSprite, name);
+                p = new Player(id, px, py, name);
                 state.players.put(id, p);
             }
 
@@ -395,7 +371,5 @@ public class GameFrame extends JFrame {
         updateButtons(panel);
         panel.repaint();
     }
-
-
 
 }

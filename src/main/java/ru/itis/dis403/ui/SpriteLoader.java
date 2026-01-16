@@ -15,16 +15,4 @@ public class SpriteLoader {
         }
     }
 
-    public static BufferedImage crop(
-            BufferedImage sheet,
-            int col, int row,
-            int frameW, int frameH
-    ) {
-        return sheet.getSubimage(
-                col * frameW,
-                row * frameH,
-                frameW,
-                frameH
-        );
-    }
 }

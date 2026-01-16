@@ -10,17 +10,17 @@ import java.net.UnknownHostException;
 public class Main {
     public static void main(String[] args) throws UnknownHostException {
         String[] options = {"Host", "Client"};
-        ImageIcon icon = new ImageIcon(Main.class.getResource("/sprites/icon/icon.png")); // JOptionPane требует тип ImageIcon
+        ImageIcon icon = new ImageIcon(Main.class.getResource("/sprites/icon/icon.png"));
 
         int choice = JOptionPane.showOptionDialog(
                 null,
                 "Выберите режим",
                 "MiniСS",
-                JOptionPane.DEFAULT_OPTION, // свои кнопки из options, а не готовые
+                JOptionPane.DEFAULT_OPTION,
                 JOptionPane.PLAIN_MESSAGE,
                 icon,
                 options,
-                options[0] // выбран по дефолту хост
+                options[0]
         );
 
         if (choice == 0) {
