@@ -29,7 +29,10 @@ public class GameFrame extends JFrame {
     private int myId = -1;
     private String playerName;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 98e3899cb3a3f5e01c9678bbce961a31e207572d
     public GameFrame(boolean isHost, String ip) {
         this.isHost = isHost;
 
@@ -45,7 +48,10 @@ public class GameFrame extends JFrame {
             new HostServer(5000, minutes * 60_000L);
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 98e3899cb3a3f5e01c9678bbce961a31e207572d
         GamePanel panel = initButtons(isHost);
 
 
@@ -101,7 +107,10 @@ public class GameFrame extends JFrame {
             public void mouseReleased(MouseEvent e) { localPlayer.shooting = false; }
         });
 
+<<<<<<< HEAD
 //        Таймер постоянно обрабатывает ввод, но пакеты отправляются только при изменении состояния , чтобы не перегружать сервер.
+=======
+>>>>>>> 98e3899cb3a3f5e01c9678bbce961a31e207572d
         new Timer(16, e -> {
 
             if (!gameStarted) {

@@ -1,5 +1,7 @@
 package ru.itis.dis403.model;
 
+import ru.itis.dis403.ui.SpriteLoader;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -28,9 +30,7 @@ public class GameMap {
 
     private void loadBackground() {
         try {
-            background = ImageIO.read(
-                    GameMap.class.getResource("/sprites/map/map1.png")
-            );
+            background = SpriteLoader.load("/sprites/map/map1.png");
         } catch (Exception e) {
             System.out.println("Не удалось загрузить карту");
         }

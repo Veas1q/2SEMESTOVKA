@@ -14,5 +14,8 @@ public class SpriteLoader {
             return null;
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 98e3899cb3a3f5e01c9678bbce961a31e207572d
 }

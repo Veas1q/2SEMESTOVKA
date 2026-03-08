@@ -16,7 +16,11 @@ public class Player {
     public String name;
     public int lastDamageFrom = -1;
 
+<<<<<<< HEAD
     public BufferedImage sprite = SpriteLoader.load("/sprites/player/player_sheet.png");;
+=======
+    public BufferedImage sprite = SpriteLoader.load("/sprites/player/player_sheet.png");
+>>>>>>> 98e3899cb3a3f5e01c9678bbce961a31e207572d
     public Weapon weapon;
 
     public Player(int id, float x, float y, String name) {

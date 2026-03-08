@@ -38,7 +38,10 @@ public class HostServer {
         this.gameDurationMs = gameDurationMs;
         this.physics = new PhysicsEngine(state);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 98e3899cb3a3f5e01c9678bbce961a31e207572d
         new GameLoop(state, this::update).start();
 
 
@@ -166,7 +169,11 @@ public class HostServer {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
+<<<<<<< HEAD
             Player p = new Player(id, 0, 0, "");
+=======
+            Player p = new Player(id, 0, 0,  "");
+>>>>>>> 98e3899cb3a3f5e01c9678bbce961a31e207572d
             respawnPlayer(p);
             state.players.put(id, p);
 
