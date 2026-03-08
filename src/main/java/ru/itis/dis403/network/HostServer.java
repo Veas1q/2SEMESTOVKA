@@ -33,7 +33,6 @@ public class HostServer {
     private final PhysicsEngine physics;
 
     private int nextId = 1;
-    private BufferedImage playerSprite;
 
     public HostServer(int port, long gameDurationMs) {
         this.gameDurationMs = gameDurationMs;
@@ -41,6 +40,7 @@ public class HostServer {
 
 
         new GameLoop(state, this::update).start();
+
 
         new Thread(() -> {
             try (ServerSocket server = new ServerSocket(port)) {
